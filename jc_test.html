@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery_jc</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>这里是一句简单的话</p>
+    <div id="second">这里是第二个模块</div>
+    <p class="third">只是第三个地方</p>
+    <div id="fadeout"></div>
+    <button>点击有惊喜</button>
+    <div id="slid"></div>
+    <p class="cr">之前之后插入内容</p>
+    <div class="remove">
+        <a class="remove1">我是测试第一个</a>
+        <a>我是测试第二个</a>
+    </div>
+</body>
+<style>
+    #fadeout{
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+    }
+
+    button{
+        margin-top: 10px;
+    }
+
+    #slid{
+        display: none;
+        margin-top: 10px;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+    .remove{
+        width: 500px;
+        height: 400px;
+        margin: 50px;
+        box-sizing: border-box;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $("p:nth-child(1)").click(function (){
+            $(this).hide(1000);
+        });
+
+        $("#second").click(function () {
+            $(this).text("第二个模块已经改变");
+        });
+
+        $(".third").click(function () {
+            $(this).html("<p>怎样</p>");
+        });
+
+//        $("#fadeout").click(function () {
+//
+//        });
+        
+        $("button").click(function () {
+            $("#fadeout").fadeToggle(2000,function () {
+                alert("动画完成");
+            });
+            $("#slid").slideToggle(2000);
+        });
+
+        $(".cr").click(function () {
+            $(this).before("<p>在前面添加内容</p>");
+            $(this).append("在后面插入内容")
+        });
+
+        $(".remove").click(function () {
+//            $(this).css({"background-color":'yellow',"width":"500px"})
+//            console.log($(this).width()+";"+$(this).height());
+//            console.log($(this).innerWidth()+";"+$(this).innerHeight());
+//            console.log($(this).outerWidth()+";"+$(this).outerHeight());
+//            console.log($(this).find("*"));
+            console.log($("a").eq(0).text("哈哈哈"));
+        })
+    });
+</script>
+</html>
